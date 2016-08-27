@@ -2,10 +2,7 @@ Rails.application.routes.draw do
   scope '/api' do 
     namespace :fornohservice do
       resources :categories do
-        resources :recipes do
-          resources :ingredients
-          resources :directions
-        end
+        resources :recipes
       end
     end
   end
