@@ -29,4 +29,7 @@ class Fornohservice::RecipesController < ApplicationController
   # DELETE /links/1.json
   def destroy
   end
+
+  def home
+  end
 end
