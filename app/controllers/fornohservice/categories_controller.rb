@@ -1,11 +1,15 @@
 class Fornohservice::CategoriesController < ApplicationController
 
+  before_action :init_category
+  
   def index
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
+    @data = @category.read(params[:id])
+    render json: @data
   end
 
   # GET /links/new
@@ -30,4 +34,9 @@ class Fornohservice::CategoriesController < ApplicationController
   # DELETE /links/1.json
   def destroy
   end
+
+  private def init_category
+    @category = CategoriesRepo.new
+  end
 end
+

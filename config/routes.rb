@@ -2,15 +2,11 @@ Rails.application.routes.draw do
 
   scope '/api' do 
     namespace :fornohservice do
-      resources :categories do
-        resources :recipes, only: [:index, :new, :create]
-      end
-      resources :recipes, only: [:show, :edit, :update, :destroy]
+      resources :categories
+      resources :recipes
     end
   end
 
-  get '/api/fornohservice/recipes/home' => 'recipes#home'
-    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
