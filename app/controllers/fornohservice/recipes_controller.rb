@@ -1,10 +1,16 @@
 class Fornohservice::RecipesController < ApplicationController
+   before_action :init_recipe
+  
   def index
+    @data = @recipe.index
+    render json: @data
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
+    @data = @recipe.read(params[:id])
+    render json: @data
   end
 
   # GET /links/new
@@ -29,7 +35,8 @@ class Fornohservice::RecipesController < ApplicationController
   # DELETE /links/1.json
   def destroy
   end
-
-  def home
+  
+  private def init_recipe
+    @recipe = RecipesRepo.new
   end
 end
