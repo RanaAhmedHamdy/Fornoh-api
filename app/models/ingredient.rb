@@ -1,2 +1,2 @@
-class Category
+class Ingredient
 end

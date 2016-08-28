@@ -3,6 +3,8 @@ class Fornohservice::CategoriesController < ApplicationController
   before_action :init_category
   
   def index
+    @data = @category.index
+    render json: @data
   end
 
   # GET /links/1

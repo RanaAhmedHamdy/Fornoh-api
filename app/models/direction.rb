@@ -1,2 +1,2 @@
-class Category
+class Direction
 end
