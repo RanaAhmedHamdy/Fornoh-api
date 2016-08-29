@@ -2,6 +2,7 @@ class RecipesRepo
 	include Irepo
 
 	def initialize
+		@directions = DirectionsRepo.new
 		@ings = IngredientsRepo.new
 		@recipes = []
 		@recipes << Recipetest.new(1, "fried chicken", "pjoto/1.png", 1)
@@ -16,15 +17,13 @@ class RecipesRepo
 	end
 
 	def read(id)
-		@output = []
 		@recipes.each do |recipe|
 	      if recipe.id == id.to_i
-	        @output << recipe
-	        @output << @ings.read(recipe.id)
-	        break
+	        recipe.ingredients = @ings.read(recipe.id)
+	        recipe.directions = @directions.read(recipe.id)
+	        return recipe
 	      end
 	    end
-	    return @output
 	end
 
 	def update

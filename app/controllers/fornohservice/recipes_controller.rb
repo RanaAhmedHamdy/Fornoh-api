@@ -24,16 +24,22 @@ class Fornohservice::RecipesController < ApplicationController
   # POST /links
   # POST /links.json
   def create
+    @data = @recipe.create(params)
+    render json: @data
   end
 
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
+    @data = @recipe.update(params)
+    render json: @data
   end
 
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+    @data = @recipe.delete(params[:id])
+    render json: @data
   end
   
   private def init_recipe

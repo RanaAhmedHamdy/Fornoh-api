@@ -3,13 +3,17 @@ class IngredientsRepo
 
 	def initialize
 		@ings = []
-		@ings << Ingredienttest.new(1,1,1)
-		@ings << Ingredienttest.new(1,2,1)
-		@ings << Ingredienttest.new(2,5,6)
-		@ings << Ingredienttest.new(3,4,10)
+		@ings << Ingredienttest.new(1,1,1,1)
+		@ings << Ingredienttest.new(1,2,1,2)
+		@ings << Ingredienttest.new(2,5,6,3)
+		@ings << Ingredienttest.new(3,4,10,4)
 	end
 
-	def create
+	def create(ingredient)
+		@new_ing = Ingredienttest.new(ingredient["recipe_id"], ingredient["food_id"], 
+			ingredient["unit_id"], ingredient["id"])
+	    @ings << @new_ing
+	    return @new_ing
 	end
 
 	def read(recipe_id)
@@ -22,9 +26,24 @@ class IngredientsRepo
 	    return @output
 	end
 
-	def update
+	def update(data)
+		@ings.each do |ing|
+	      if ing.id == data["id"].to_i
+	        ing.food_id = data["food_id"]
+	        ing.unit_id = data["unit_id"]
+	        return ing
+	      end
+	    end
+	    return "error"
 	end
 
-	def delete
+	def delete(id)
+		@ings.each do |ing|
+	      if ing.id == id.to_i
+	        @ings.delete(ing)
+	        return "deleted successfully"
+	      end
+	    end
+	    return "item not found"
 	end
 end

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   scope '/api' do 
     namespace :fornohservice do
       resources :categories
-      resources :recipes
+      resources :recipes do
+        resources :ingredients, only: [:create, :update, :destroy]
+        resources :directions, only: [:create, :update, :destroy]
+      end
     end
   end
 

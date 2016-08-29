@@ -12,7 +12,10 @@ class CategoriesRepo
     return @categs
   end
 
-  def create
+  def create(category)
+    @new_category = Categorytest.new(category["id"], category["name"])
+    @categs << @new_category
+    return @new_category
   end
 
   def read(id)
@@ -23,9 +26,23 @@ class CategoriesRepo
     end
   end
 
-  def update(id)
+  def update(data)
+     @categs.each do |categ|
+      if categ.id == data["id"].to_i
+        categ.name = data["name"]
+        return categ
+      end
+    end
+    return "error"
   end
 
   def delete(id)
+    @categs.each do |categ|
+      if categ.id == id.to_i
+        @categs.delete(categ)
+        return "deleted successfully"
+      end
+    end
+    return "item not found"
   end
 end

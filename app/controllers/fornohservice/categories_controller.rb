@@ -24,20 +24,29 @@ class Fornohservice::CategoriesController < ApplicationController
 
   # POST /links
   # POST /links.json
+  #{"id":1, "name": "fish"}
   def create
+    @data = @category.create(params)
+    render json: @data
   end
 
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
+  #{"id":1, "name": "fish"}
   def update
+    @data = @category.update(params)
+    render json: @data
   end
 
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+    @data = @category.delete(params[:id])
+    render json: @data
   end
 
-  private def init_category
+  private 
+  def init_category
     @category = CategoriesRepo.new
   end
 end
