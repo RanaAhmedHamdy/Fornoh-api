@@ -1,11 +1,13 @@
 class Fornohservice::DirectionsController < ApplicationController
   before_action :init_directions
 
+#{"recipe_id": 1, "title": "ss", "photo": "1.png", "id": 6}
   def create
   	@data = @direction.create(params)
     render json: @data
   end
 
+#{"recipe_id": 1, "title": "ss", "photo": "1.png", "id": 6}
   def update
   	@data = @direction.update(params)
     render json: @data

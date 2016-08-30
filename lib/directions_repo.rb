@@ -9,7 +9,11 @@ class DirectionsRepo
 		@directions << Directiontest.new(3,"put in oven", "4.png",4)
 	end
 
-	def create
+	def create(direction)
+		@new_dir = Directiontest.new(direction["recipe_id"], direction["title"], 
+			direction["photo"], direction["id"])
+	    @directions << @new_dir
+	    return @new_dir
 	end
 
 	def read(recipe_id)
@@ -22,9 +26,24 @@ class DirectionsRepo
 	    return @output
 	end
 
-	def update
+	def update(data)
+		@directions.each do |dir|
+	      if dir.id == data["id"].to_i
+	        dir.title = data["title"]
+	        dir.photo = data["photo"]
+	        return dir
+	      end
+	    end
+	    return "error"
 	end
 
-	def delete
+	def delete(id)
+		@directions.each do |dir|
+	      if dir.id == id.to_i
+	        @directions.delete(dir)
+	        return "deleted successfully"
+	      end
+	    end
+	    return "item not found"
 	end
 end
