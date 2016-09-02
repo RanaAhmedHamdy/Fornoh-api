@@ -10,8 +10,9 @@ class IngredientsRepo
 	end
 
 	def create(ingredient)
+		@id = 1;
 		@new_ing = Ingredienttest.new(ingredient["recipe_id"], ingredient["food_id"], 
-			ingredient["unit_id"], ingredient["id"])
+			ingredient["unit_id"], @id)
 	    @ings << @new_ing
 	    return @new_ing
 	end

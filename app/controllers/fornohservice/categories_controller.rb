@@ -32,7 +32,7 @@ class Fornohservice::CategoriesController < ApplicationController
 
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
-  #{"id":1, "name": "fish"}
+  #{name": "fish"}
   def update
     @data = @category.update(params)
     render json: @data

@@ -10,8 +10,9 @@ class DirectionsRepo
 	end
 
 	def create(direction)
+		@id = 1;
 		@new_dir = Directiontest.new(direction["recipe_id"], direction["title"], 
-			direction["photo"], direction["id"])
+			direction["photo"], @id)
 	    @directions << @new_dir
 	    return @new_dir
 	end

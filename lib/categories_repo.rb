@@ -13,7 +13,8 @@ class CategoriesRepo
   end
 
   def create(category)
-    @new_category = Categorytest.new(category["id"], category["name"])
+    @id = 1;
+    @new_category = Categorytest.new(@id, category["name"])
     @categs << @new_category
     return @new_category
   end

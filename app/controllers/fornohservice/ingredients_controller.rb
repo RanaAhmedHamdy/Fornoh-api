@@ -1,7 +1,7 @@
 class Fornohservice::IngredientsController < ApplicationController
   before_action :init_ingredients
 
-  #{"recipe_id": 1, "food_id": 1, "unit_id": 1, "id": 1}
+  #{"recipe_id": 1, "food_id": 1, "unit_id": 1}
   def create
   	@data = @ingredient.create(params)
     render json: @data
