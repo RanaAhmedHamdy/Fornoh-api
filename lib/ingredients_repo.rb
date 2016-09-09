@@ -3,16 +3,15 @@ class IngredientsRepo
 
 	def initialize
 		@ings = []
-		@ings << Ingredienttest.new(1,1,1,1)
-		@ings << Ingredienttest.new(1,2,1,2)
-		@ings << Ingredienttest.new(2,5,6,3)
-		@ings << Ingredienttest.new(3,4,10,4)
+		@ings << Ingredienttest.new(1,1,1)
+		@ings << Ingredienttest.new(1,2,1)
+		@ings << Ingredienttest.new(2,5,6)
+		@ings << Ingredienttest.new(3,4,10)
 	end
 
 	def create(ingredient)
-		@id = 1;
 		@new_ing = Ingredienttest.new(ingredient["recipe_id"], ingredient["food_id"], 
-			ingredient["unit_id"], @id)
+			ingredient["unit_id"])
 	    @ings << @new_ing
 	    return @new_ing
 	end

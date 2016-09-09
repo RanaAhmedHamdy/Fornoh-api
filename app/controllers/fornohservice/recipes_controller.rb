@@ -43,6 +43,6 @@ class Fornohservice::RecipesController < ApplicationController
   end
   
   private def init_recipe
-    @recipe = RecipesRepo.new
+    @recipe = RepoPool.get_repo("recipes")
   end
 end

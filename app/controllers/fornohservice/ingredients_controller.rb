@@ -20,6 +20,6 @@ class Fornohservice::IngredientsController < ApplicationController
 
   private 
   def init_ingredients
-    @ingredient = IngredientsRepo.new
+    @ingredient = RepoPool.get_repo("ingredients")
   end
 end

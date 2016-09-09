@@ -1,18 +1,17 @@
 class DirectionsRepo
 	include Irepo
-	
+
 	def initialize
 		@directions = []
-		@directions << Directiontest.new(1,"put salt","image1.jpg",1)
-		@directions << Directiontest.new(1,"put water", "i2.png",2)
-		@directions << Directiontest.new(2, "shake", "3.png", 3)
-		@directions << Directiontest.new(3,"put in oven", "4.png",4)
+		@directions << Directiontest.new(1,"put salt","image1.jpg")
+		@directions << Directiontest.new(1,"put water", "i2.png")
+		@directions << Directiontest.new(2, "shake", "3.png")
+		@directions << Directiontest.new(3,"put in oven", "4.png")
 	end
 
 	def create(direction)
-		@id = 1;
-		@new_dir = Directiontest.new(direction["recipe_id"], direction["title"], 
-			direction["photo"], @id)
+		@new_dir = Directiontest.new(direction["recipe_id"], direction["title"],
+			direction["photo"])
 	    @directions << @new_dir
 	    return @new_dir
 	end

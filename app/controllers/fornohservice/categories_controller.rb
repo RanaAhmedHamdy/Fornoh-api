@@ -1,7 +1,7 @@
 class Fornohservice::CategoriesController < ApplicationController
 
   before_action :init_category
-  
+
   def index
     @data = @category.index
     render json: @data
@@ -45,9 +45,8 @@ class Fornohservice::CategoriesController < ApplicationController
     render json: @data
   end
 
-  private 
+  private
   def init_category
-    @category = CategoriesRepo.new
+    @category = RepoPool.get_repo("categories")
   end
 end
-

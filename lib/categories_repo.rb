@@ -1,11 +1,11 @@
 
 class CategoriesRepo
   include Irepo
-  
+
   def initialize
     @categs = []
-    @categs << Categorytest.new(1, "main dishes")
-    @categs << Categorytest.new(2, "desserts")
+    @categs << Categorytest.new("main dishes")
+    @categs << Categorytest.new("desserts")
   end
 
   def index
@@ -13,8 +13,7 @@ class CategoriesRepo
   end
 
   def create(category)
-    @id = 1;
-    @new_category = Categorytest.new(@id, category["name"])
+    @new_category = Categorytest.new(category["name"])
     @categs << @new_category
     return @new_category
   end
