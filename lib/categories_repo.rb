@@ -26,9 +26,9 @@ class CategoriesRepo
     end
   end
 
-  def update(data)
+  def update(id, data)
      @categs.each do |categ|
-      if categ.id == data["id"].to_i
+      if categ.id == id.to_i
         categ.name = data["name"]
         return categ
       end

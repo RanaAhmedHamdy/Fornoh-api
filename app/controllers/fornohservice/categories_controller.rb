@@ -26,7 +26,7 @@ class Fornohservice::CategoriesController < ApplicationController
   # POST /links.json
   #{"id":1, "name": "fish"}
   def create
-    @data = @category.create(params)
+    @data = @category.create(categ_params)
     render json: @data
   end
 
@@ -34,7 +34,7 @@ class Fornohservice::CategoriesController < ApplicationController
   # PATCH/PUT /links/1.json
   #{name": "fish"}
   def update
-    @data = @category.update(params)
+    @data = @category.update(params[:id], categ_params)
     render json: @data
   end
 
@@ -47,6 +47,10 @@ class Fornohservice::CategoriesController < ApplicationController
 
   private
   def init_category
-    @category = RepoPool.get_repo("categories")
+    @category = RepoPool.get_repo("categoriesdb")
+  end
+
+  def categ_params
+    params.require(:category).permit(:name)
   end
 end

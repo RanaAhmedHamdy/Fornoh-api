@@ -14,5 +14,10 @@ class RepoPool
 	@@repos["directions"] = DirectionsRepo.new
 	@@repos["ingredients"] = IngredientsRepo.new
 	@@repos["recipes"] = RecipesRepo.new
+
+	@@repos["categoriesdb"] = CategoriesDbRepo.new
+	@@repos["directionsdb"] = DirectionsDbRepo.new
+	@@repos["ingredientsdb"] = IngredientsDbRepo.new
+	@@repos["recipesdb"] = RecipesDbRepo.new
 	
 end
