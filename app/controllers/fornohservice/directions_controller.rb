@@ -20,6 +20,6 @@ class Fornohservice::DirectionsController < ApplicationController
 
   private 
   def init_directions
-    @direction = RepoPool.get_repo("directions")
+    @direction = RepoPool.get_repo("directionsdb")
   end
 end

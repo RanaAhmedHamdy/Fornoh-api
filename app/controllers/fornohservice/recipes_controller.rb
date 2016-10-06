@@ -21,17 +21,18 @@ class Fornohservice::RecipesController < ApplicationController
   def edit
   end
 
-  # POST /links
-  # POST /links.json
+  #{"name": "الكنافة", "photo": "photo/a.png", "difficulty": 1, "time": 120
+  #, "servings":  1, "category_id": 1, "directions_attributes":
+  #[{"title": "يييييييييييييييييييييييييييييييييييييييي", "photo": "a.pgn"}]}
   def create
-    @data = @recipe.create(params)
+    @data = @recipe.create(recipe_params)
     render json: @data
   end
 
   # PATCH/PUT /links/1
   # PATCH/PUT /links/1.json
   def update
-    @data = @recipe.update(params)
+    @data = @recipe.update(params[:id], recipe_params)
     render json: @data
   end
 
@@ -42,7 +43,13 @@ class Fornohservice::RecipesController < ApplicationController
     render json: @data
   end
   
-  private def init_recipe
-    @recipe = RepoPool.get_repo("recipes")
-  end
+  private 
+    def init_recipe
+      @recipe = RepoPool.get_repo("recipesdb")
+    end
+
+    def recipe_params
+      params.permit(:name, :photo, :time, :difficulty, :servings, :category_id, 
+        :directions_attributes => [:photo, :title])
+    end
 end

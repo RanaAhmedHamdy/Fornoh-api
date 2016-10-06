@@ -3,9 +3,9 @@ class CreateRecipes < ActiveRecord::Migration
     create_table :recipes do |t|
       t.string :name
       t.string :photo
-      t.string :time
-      t.integer :difficulty
-      t.integer :servings
+      t.integer :time, :limit => 2
+      t.integer :difficulty, :limit => 1
+      t.integer :servings, :limit => 1
       t.references :category, index: true, foreign_key: true
 
       t.timestamps null: false

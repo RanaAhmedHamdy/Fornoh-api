@@ -2,40 +2,30 @@ class DirectionsDbRepo
 	include Irepo
 
 	def create(direction)
-		@new_dir = Directiontest.new(direction["recipe_id"], direction["title"],
-			direction["photo"])
-	    @directions << @new_dir
-	    return @new_dir
+		@direction = Direction.new(direction)
+		if @direction.save
+			return "successfully created"
+		else
+			return "error"
+		end
 	end
 
 	def read(recipe_id)
-		@output = []
-		@directions.each do |dir|
-	      if dir.recipe_id == recipe_id.to_i
-	        @output << dir
-	      end
-	    end
-	    return @output
+		@direction = Direction.find(id)
+		return @direction
 	end
 
-	def update(data)
-		@directions.each do |dir|
-	      if dir.id == data["id"].to_i
-	        dir.title = data["title"]
-	        dir.photo = data["photo"]
-	        return dir
-	      end
-	    end
-	    return "error"
+	def update(id, direction)
+		@direction = Direction.find(id)
+		if @direction.update(direction)
+			return "OK"
+		else
+			return "error"
+		end
 	end
 
 	def delete(id)
-		@directions.each do |dir|
-	      if dir.id == id.to_i
-	        @directions.delete(dir)
-	        return "deleted successfully"
-	      end
-	    end
-	    return "item not found"
+		@direction = Direction.find(id)
+		@direction.destroy
 	end
 end

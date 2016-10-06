@@ -51,6 +51,6 @@ class Fornohservice::CategoriesController < ApplicationController
   end
 
   def categ_params
-    params.require(:category).permit(:name)
+    params.permit(:name)
   end
 end
