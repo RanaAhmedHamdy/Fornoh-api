@@ -8,17 +8,17 @@ class RecipesDbRepo
 	end
 
 	def create(data)
-		@recipe = Recipe.create(data)
-		#if @recipe.save
-		#	return "successfully created"
-		#else
-		#	return "error"
-		#end
+		@recipe = Recipe.new(data)
+		if @recipe.save
+			return @recipe
+		else
+			return "error"
+		end
 	end
 
 	def read(id)
 		@recipe = Recipe.find(id)
-		return @recipe
+		return @recipe.to_json(:include => [:directions])
 	end
 
 	def update(id, data)

@@ -1,6 +1,7 @@
 class DirectionsDbRepo
 	include Irepo
 
+	#useful if user want to add one more direction to an existing recipe
 	def create(direction)
 		@direction = Direction.new(direction)
 		if @direction.save
@@ -8,11 +9,6 @@ class DirectionsDbRepo
 		else
 			return "error"
 		end
-	end
-
-	def read(recipe_id)
-		@direction = Direction.find(id)
-		return @direction
 	end
 
 	def update(id, direction)
