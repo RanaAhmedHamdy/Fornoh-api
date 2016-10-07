@@ -26,9 +26,9 @@ class DirectionsRepo
 	    return @output
 	end
 
-	def update(data)
+	def update(id, data)
 		@directions.each do |dir|
-	      if dir.id == data["id"].to_i
+	      if dir.id == id.to_i
 	        dir.title = data["title"]
 	        dir.photo = data["photo"]
 	        return dir

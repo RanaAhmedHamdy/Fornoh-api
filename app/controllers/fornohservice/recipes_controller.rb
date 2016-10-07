@@ -23,7 +23,9 @@ class Fornohservice::RecipesController < ApplicationController
 
   #{"name": "الكنافة", "photo": "photo/a.png", "difficulty": 1, "time": 120
   #, "servings":  1, "category_id": 1, "directions_attributes":
-  #[{"title": "يييييييييييييييييييييييييييييييييييييييي", "photo": "a.pgn"}]}
+  #[{"title": "يييييييييييييييييييييييييييييييييييييييي", "photo": "a.pgn"}],
+  #"ingredients_attributes": [{"food": "طماطم", "unit_id": 1, "quantity":1},
+  #{"food": "خيار", "unit_id": 1, ,"quantity":2}]}
   def create
     @data = @recipe.create(recipe_params)
     render json: @data
@@ -50,6 +52,7 @@ class Fornohservice::RecipesController < ApplicationController
 
     def recipe_params
       params.permit(:name, :photo, :time, :difficulty, :servings, :category_id, 
-        :directions_attributes => [:photo, :title])
+        :directions_attributes => [:photo, :title], :ingredients_attributes =>
+        [:food, :unit_id, :quantity])
     end
 end

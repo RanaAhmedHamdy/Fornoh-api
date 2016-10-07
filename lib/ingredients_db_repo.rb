@@ -10,11 +10,6 @@ class IngredientsDbRepo
 		end
 	end
 
-	def read(recipe_id)
-		@ingredient = Ingredient.find(id)
-		return @ingredient
-	end
-
 	def update(id, ingredient)
 		@ingredient = Ingredient.find(id)
 		if @ingredient.update(ingredient)

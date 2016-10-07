@@ -18,7 +18,7 @@ class RecipesDbRepo
 
 	def read(id)
 		@recipe = Recipe.find(id)
-		return @recipe.to_json(:include => [:directions])
+		return @recipe.to_json(:include => [:directions, :ingredients])
 	end
 
 	def update(id, data)
