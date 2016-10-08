@@ -7,4 +7,5 @@ class Recipe < ActiveRecord::Base
   accepts_nested_attributes_for :ingredients
 
   validates :name, :photo, :servings, :difficulty, :time, :category_id, presence: true
+  validates :category_id, :difficulty, :servings, :numericality => true
 end
