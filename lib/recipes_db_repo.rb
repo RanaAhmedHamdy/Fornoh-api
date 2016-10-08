@@ -10,10 +10,13 @@ class RecipesDbRepo
 	def create(data)
 		@recipe = Recipe.new(data)
 		if @recipe.save
-			return @recipe
-		else
-			return "error"
-		end
+			return {status: 200, 
+              message: "successfully created",
+              created_category: @recipe}.to_json
+	    else
+	      return { status: 400, 
+	               errors: @recipe.errors }.to_json
+	    end
 	end
 
 	def read(id)
@@ -24,10 +27,13 @@ class RecipesDbRepo
 	def update(id, data)
 		@recipe = Recipe.find(id)
 		if @recipe.update(data)
-			return "OK"
-		else
-			return "error"
-		end
+			return {status: 200, 
+              message: "successfully updated",
+              updated_category: @recipe}.to_json
+	    else
+	      return { status: 400, 
+	               errors: @recipe.errors }.to_json
+	    end
 	end
 
 	def delete(id)

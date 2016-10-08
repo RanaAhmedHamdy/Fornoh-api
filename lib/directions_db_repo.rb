@@ -5,19 +5,25 @@ class DirectionsDbRepo
 	def create(direction)
 		@direction = Direction.new(direction)
 		if @direction.save
-			return "successfully created"
-		else
-			return "error"
-		end
+			return {status: 200, 
+              message: "successfully created",
+              created_category: @direction}.to_json
+    	else
+		      return { status: 400, 
+		               errors: @direction.errors }.to_json
+    	end
 	end
 
 	def update(id, direction)
 		@direction = Direction.find(id)
 		if @direction.update(direction)
-			return "OK"
-		else
-			return "error"
-		end
+			return {status: 200, 
+              message: "successfully updated",
+              updated_category: @direction}.to_json
+	     else
+	      return { status: 400, 
+	               errors: @direction.errors }.to_json
+	     end
 	end
 
 	def delete(id)

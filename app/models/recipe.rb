@@ -5,4 +5,6 @@ class Recipe < ActiveRecord::Base
 
   accepts_nested_attributes_for :directions
   accepts_nested_attributes_for :ingredients
+
+  validates :name, :photo, :servings, :difficulty, :time, :category_id, presence: true
 end

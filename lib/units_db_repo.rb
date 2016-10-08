@@ -9,9 +9,12 @@ class UnitsDbRepo
   def create(unit)
     @unit = Unit.new(unit)
     if @unit.save
-      return "successfully created"
+      return {status: 200, 
+              message: "successfully created",
+              created_category: @unit}.to_json
     else
-      return "error"
+      return { status: 400, 
+               errors: @unit.errors }.to_json
     end
   end
 
@@ -23,9 +26,12 @@ class UnitsDbRepo
   def update(id, data)
      @unit = Unit.find(id)
      if @unit.update(data)
-      return "OK"
+      return {status: 200, 
+              message: "successfully updated",
+              updated_category: @unit}.to_json
      else
-      return "error"
+      return { status: 400, 
+               errors: @unit.errors }.to_json
      end
   end
 
