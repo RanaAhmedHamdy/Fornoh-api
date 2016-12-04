@@ -11,16 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161004230913) do
+ActiveRecord::Schema.define(version: 20161204204138) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name", limit: 255
   end
 
   create_table "directions", force: :cascade do |t|
-    t.text    "title",     limit: 65535
-    t.string  "photo",     limit: 255
-    t.integer "recipe_id", limit: 4
+    t.text     "title",              limit: 65535
+    t.string   "photo",              limit: 255
+    t.integer  "recipe_id",          limit: 4
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   add_index "directions", ["recipe_id"], name: "index_directions_on_recipe_id", using: :btree
@@ -36,14 +40,18 @@ ActiveRecord::Schema.define(version: 20161004230913) do
   add_index "ingredients", ["unit_id"], name: "index_ingredients_on_unit_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "photo",       limit: 255
-    t.integer  "time",        limit: 2
-    t.integer  "difficulty",  limit: 1
-    t.integer  "servings",    limit: 1
-    t.integer  "category_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",               limit: 255
+    t.string   "photo",              limit: 255
+    t.integer  "time",               limit: 2
+    t.integer  "difficulty",         limit: 1
+    t.integer  "servings",           limit: 1
+    t.integer  "category_id",        limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "photo_file_name",    limit: 255
+    t.string   "photo_content_type", limit: 255
+    t.integer  "photo_file_size",    limit: 4
+    t.datetime "photo_updated_at"
   end
 
   add_index "recipes", ["category_id"], name: "index_recipes_on_category_id", using: :btree
